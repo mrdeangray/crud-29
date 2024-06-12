@@ -1,38 +1,79 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 .App {
   text-align: center;
+  height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.header{
+  background-color: black;
   color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  padding: 0px 2%
+}
+.header ul{
+  list-style: none;
+  width: 40%;
+
+  display: flex;
+  justify-content: space-between;
+}
+.header button{
+  border: none;
+  color: white;
+  background-color: green;
+  padding: 2px 10px;
+  font-size: 20px;
+  border-radius: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.center{
+  display: flex;
+  height: 100%;
+}
+.navigation{
+  background-color: aqua;
+  height: 100%;
+}
+.main{
+  background-color: rgb(107, 111, 111);
+  height: 100%;
+  width: 100%;
+}
+.radio-btn-group{
+  margin: 0 auto;
+  /* border: 3px solid red; */
+  width:60%;
+  display: flex;
+ flex-direction: column;
+ text-align: left;
+ margin-bottom: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.radio-btn-row{
+  margin: 0 auto;
+  /* border: 3px solid yellow; */
+  width:100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.radio-btn{
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  font-size: 20px;
+}
+.radio-btn:hover{
+  transform:scale(1.1);
+cursor: pointer;
+  border: 2px solid rgb(0, 0, 66);
+
 }

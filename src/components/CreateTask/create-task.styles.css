@@ -1,0 +1,18 @@
+.create-task header{
+    display: flex;
+    align-items:center;
+}
+.create-task header h1{
+  font-size: 20px;
+  flex-grow:1;
+    text-align: center;
+}
+
+.create-task .date-time-section{
+    display: flex;
+    flex-direction: column;
+    
+}
+section{
+    margin-bottom: 10px;
+}
