@@ -1,21 +1,18 @@
 import "./App.css";
-import Header from "./components/Header";
-import Navigation from "./components/Navigation";
-import RenderRoutes from "./components/RenderRoutes";
-import AuthProvider from "./context/AuthProvider";
+import CreateTask from "./components/CreateTask";
+import ReadTasks from "./components/ReadTasks";
 import TaskProvider from "./context/TaskProvider";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
       <TaskProvider>
-        <AuthProvider>
-          <Header className="header" />
-          <div className="center">
-            <Navigation className="navigation" />
-            <RenderRoutes className="main" />
-          </div>
-        </AuthProvider>
+        <Routes>
+          <Route exact path="/createtask" element={<CreateTask />} />
+          <Route exact path="/" element={<ReadTasks />} />
+          {/* <Route exact path="/updatetask/:id" element={<UpdateTask />} /> */}
+        </Routes>
       </TaskProvider>
     </div>
   );

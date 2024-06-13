@@ -1,6 +1,10 @@
 .create-task header{
     display: flex;
     align-items:center;
+    /* border: 2px solid greenyellow; */
+    width: 100%;
+    margin: 30px 0px 10px 0;
+  
 }
 .create-task header h1{
   font-size: 20px;
@@ -13,6 +17,28 @@
     flex-direction: column;
     
 }
+
+ .date-time-section #datetime{
+width: 100%;
+border-radius: 40px;
+    
+}
 section{
     margin-bottom: 10px;
+}
+
+.add-task-btn{
+
+    color: white;
+    background-color: #0077CC;
+    border: none;
+    padding: 8px 40px;
+    border-radius:50px
+
+}
+.create-task footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

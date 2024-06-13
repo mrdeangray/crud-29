@@ -10,6 +10,7 @@ import TaskNameInput from "../TaskNameInput";
 import BackBtn from "../BackBtn";
 import "./create-task.styles.css";
 import SubtaskInput from "../SubtaskInput";
+import CategoryInput from "../CategoryInput";
 
 const Msg = styled.p`
   font-size: 20px;
@@ -101,20 +102,35 @@ const CreateTask = () => {
           {subtasks.map((subtask, index) => {
             return (
               <SubtaskInput
-                value={subtask.name}
-                setValue={handleChange}
+                inputValue={subtask.name}
+                setInputValue={handleChange}
                 handleRemove={handleRemove}
                 handleAdd={handleAdd}
                 index={index}
+                length={subtasks.length}
               />
             );
           })}
         </div>
       </section>
-      <div>
-        <button onClick={handleSubmit}>Submit</button>
-      </div>
-      {isUpdating && <Msg>Updating...</Msg>}
+
+      <section>
+        <label htmlFor="category-input">Add Tags</label>
+        <CategoryInput
+          id="category-input"
+          placeholder="Gym, Career, Routine"
+          value={category}
+          setValue={setCategory}
+        />
+      </section>
+
+      <footer>
+        <button className="add-task-btn" onClick={handleSubmit}>
+          Add Task
+        </button>
+
+        {isUpdating && <Msg>Updating...</Msg>}
+      </footer>
     </div>
   );
 };

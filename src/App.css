@@ -4,8 +4,9 @@
   box-sizing: border-box;
 }
 .App {
-  text-align: center;
+  margin: 0 auto;
   height: 100vh;
+  width: 400px;
 }
 
 .header{
@@ -76,4 +77,54 @@
 cursor: pointer;
   border: 2px solid rgb(0, 0, 66);
 
+}
+
+
+.box{
+  border: 2px solid green;
+  width:30%;
+  margin-right: 20px;
+}
+.all-tasks{
+  display: flex;
+  
+}
+
+circle {
+  transition: all 0.7s ease-in-out;
+}
+
+.edit-icon-container, .delete-icon-container, .check-icon-container,.back-icon-container{
+  width: 10%;
+  height: auto;
+  border-radius: 50%;
+  padding: 12px;
+  background-color: rgb(177, 177, 221); 
+  display: flex;
+margin: 0 auto;
+}
+.edit-icon-container:hover, .delete-icon-container:hover, .check-icon-container:hover, .back-icon-container:hover{
+  border: 2px solid blue;
+  cursor: pointer;
+}
+
+.edit-icon, .delete-icon, .check-icon, .back-icon{
+  width: 100%;
+  height: auto;
+}
+.task-buttons{
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  /* border: 2px solid red; */
+  width: 70%;
+}
+
+.power-mode-btn{
+  background-color: #0379ce;
+  color: white;
+  font-size: 20px;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 20px;
 }

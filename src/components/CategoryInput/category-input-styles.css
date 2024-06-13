@@ -1,15 +1,14 @@
-.task-name-input {
+.category-input {
     margin: 0 auto;
     height: 100%;
     width: 100%;
     border: none;
     border-radius: 20px;
-    /* padding-left: 30px; */
     padding: 8px 0px 8px 30px;
     outline: none;
     font-size: 20px;
   }
-  .search-input  input::focus {
+  .category-input  input::focus {
     border: none;
   }
   

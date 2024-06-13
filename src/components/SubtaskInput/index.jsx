@@ -1,21 +1,38 @@
 import React from "react";
 import RemoveIcon from "./RemoveIcon";
+import "./subtask-input-styles.css";
+import PlusIcon from "./PlusIcon";
 
-const SubtaskInput = ({ value, setValue, handleRemove, handleAdd, index }) => {
+const SubtaskInput = ({
+  inputValue,
+  setInputValue,
+  handleRemove,
+  handleAdd,
+  index,
+  length,
+}) => {
   return (
-    <div>
+    <div className="subtask-input">
       <input
         autoFocus
         type="text"
         placeholder="Subtask"
-        value={value}
-        onChange={(e) => setValue(e, index)}
+        value={inputValue}
+        onChange={(e) => setInputValue(e, index)}
       />
-      ;
-      <button onClick={() => handleRemove(index)}>
-        <RemoveIcon />
-      </button>
-      <button onClick={handleAdd}>+</button>
+      {index === length - 1 ? (
+        <button
+          disabled={!!inputValue ? false : true}
+          onClick={handleAdd}
+          className="add-btn"
+        >
+          <PlusIcon />
+        </button>
+      ) : (
+        <button onClick={() => handleRemove(index)} className="remove-btn">
+          <RemoveIcon />
+        </button>
+      )}
     </div>
   );
 };
