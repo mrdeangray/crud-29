@@ -1,0 +1,22 @@
+.progressbar-container{
+    height: 20;
+    width: 300px;
+    background-color: #e0e0de;
+    border-radius: 50px;
+    margin: 50px
+  }
+
+  .progressbar-filler{
+    height: 100%;
+  
+    background-color:#0F9BFF;
+    border-radius: inherit;
+    text-align: right;
+    transition: 1s ease-in-out;
+  }
+
+  .progressbar-label{
+    padding: 5px;
+    color: white;
+    font-weight: bold;
+  }

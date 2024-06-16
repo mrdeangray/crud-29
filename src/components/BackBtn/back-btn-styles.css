@@ -5,15 +5,23 @@
     border-radius: 50%;
     font-size: 20px;
     margin-left: 20px;
+    background-color: white;
+    box-shadow: 5px 6px 5px -4px rgba(0, 0, 0, 0.1);
   }
   .back-btn button:hover{
     transform:scale(1.1);
-  cursor: pointer;
-    border: 2px solid rgb(0, 0, 255);
-  
+    cursor: pointer;
+    border: 1px solid blue;
+    transition: 0.1s ease-in-out;
   }
 
   .back-icon{
     width: 16px;
   }
+
+
+
+  
+
+
   

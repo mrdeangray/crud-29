@@ -1,88 +1,88 @@
 import React, { useContext, useEffect, useState } from "react";
 import { TaskContext } from "../../context/TaskProvider";
-import { Link } from "react-router-dom";
-import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 import CirclePercent from "../CirclePercent";
-import EditIcon from "../EditIcon";
+import EditIcon from "./EditIcon";
 import DeleteIcon from "../DeleteIcon";
-import CheckIcon from "../CheckIcon";
+import CheckIcon from "./CheckIcon";
+import "./task-styles.css";
+import CalendarIcon from "./CalendarIcon";
+import PriorityIcon from "./PriorityIcon";
+import Complexity from "./Complexity";
+import TagIcon from "./TagIcon";
+import RightChevronIcon from "./RightChevronIcon";
+import { getRandomColor } from "../../utility/getRandomColor";
 
 const Task = ({ task }) => {
+  const navigate = useNavigate();
   const { tasks, setTasks } = useContext(TaskContext);
-  const [score, setScore] = useState(0);
+  useEffect(() => {}, []);
 
-  useEffect(() => {
-    getScore();
-  }, []);
-
-  const getScore = async () => {
-    try {
-      const { data } = await axios(`https://api.github.com/users/${task.name}`);
-      setScore(data.public_respos);
-    } catch (error) {}
-  };
-
-  const toggleCompleted = (index) => {
-    const newTasks = tasks.map((tk) => {
-      if (tk.id === task.id) {
-        tk.subtasks[index].completed = !tk.subtasks[index].completed;
-        tk.percentCompleted = calcPercentComplete(tk.subtasks);
-      }
-      return tk;
-    });
+  const handleDeleteTask = () => {
+    const newTasks = tasks.filter((tk) => tk.id !== task.id);
     setTasks(newTasks);
-    localStorage.setItem("crud-25", JSON.stringify(newTasks));
+    navigate(`/`);
   };
-  const calcPercentComplete = (subtasks) => {
-    const percent =
-      (subtasks.filter((sub) => sub.completed).length / subtasks.length) * 100;
-    return Math.round(percent);
-  };
-  return (
-    <div className="box">
-      <h3>{task.name}</h3>
-      <p>score:{score}</p>
-      <p style={{ color: "blue", fontSize: "20px" }}>
-        {task.percentCompleted}%
-      </p>
-      <CirclePercent radius="20" percentage={task.percentCompleted} />
-      {/* <p>
-        Past Due:{" "}
-        {task.dueDateTime.toDate().getTime() < new Date().getTime()
-          ? "Yes"
-          : "No"}
-      </p> */}
-      {task.subtasks.map((subtask, index) => {
-        return (
-          <p
-            key={index}
-            style={{
-              textDecoration: subtask.completed ? "line-through" : "none",
-            }}
-            onClick={() => toggleCompleted(index)}
-          >
-            {subtask.name}
-          </p>
-        );
-      })}
-      <p>Priorty: {task.priority}</p>
-      <p>Complexity: {task.complexity}</p>
-      <p>Category: {task.category}</p>
-      {/* <div className="edit-icon-container">
-        <EditIcon />
-      </div> */}
 
-      <div className="task-buttons">
-        <Link to={`/updatetask/${task.id}`}>
+  return (
+    <div className="task">
+      <div className="task-header">
+        <div className="task-name">
+          <div className="label"></div>
+          <h3>{task.name}</h3>
+        </div>
+
+        <div className="task-header-icons">
           <EditIcon />
-        </Link>
-        <Link to={`/updatetask/${task.id}`}>
           <CheckIcon />
-        </Link>
-        <Link to={`/deletetask/${task.id}`}>
-          <DeleteIcon />
-        </Link>
+          <DeleteIcon onClick={handleDeleteTask} />
+        </div>
       </div>
+
+      <section className="task-mid-section">
+        <div className="left">
+          <div className="row">
+            <CalendarIcon />
+            <span style={{ color: "blue", fontSize: "16px" }}>
+              Due Date: {task.dueDateTime.format("MM/DD/YY hh:mm a")}{" "}
+            </span>
+          </div>
+          <div className="row">
+            <PriorityIcon />
+            <span>Priority: {task.priority} </span>
+          </div>
+          <div className="row">
+            <Complexity />
+            <span>Complexity: {task.complexity}</span>
+          </div>
+          <div className="row">
+            <TagIcon />
+            <span>
+              Tags:
+              {task.category.split(",").map((tag, idx) => {
+                return (
+                  <span
+                    key={idx}
+                    className="tag"
+                    style={{ backgroundColor: getRandomColor() }}
+                  >
+                    {tag}
+                  </span>
+                );
+              })}
+            </span>
+          </div>
+        </div>
+        <div className="right">
+          <CirclePercent radius="20" percentage={task.percentCompleted} />
+          <Link to={`/taskdetails/${task.id}`}>
+            <div className="task-details-link">
+              <span>Task Details</span>
+              <RightChevronIcon />
+            </div>
+          </Link>
+        </div>
+      </section>
     </div>
   );
 };

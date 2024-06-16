@@ -2,89 +2,17 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  
 }
 .App {
-  margin: 0 auto;
-  height: 100vh;
-  width: 400px;
-}
-
-.header{
-  background-color: black;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 50px;
-  padding: 0px 2%
-}
-.header ul{
-  list-style: none;
-  width: 40%;
-
-  display: flex;
-  justify-content: space-between;
-}
-.header button{
-  border: none;
-  color: white;
-  background-color: green;
-  padding: 2px 10px;
-  font-size: 20px;
-  border-radius: 10px;
-}
-
-.center{
-  display: flex;
-  height: 100%;
-}
-.navigation{
-  background-color: aqua;
-  height: 100%;
-}
-.main{
-  background-color: rgb(107, 111, 111);
-  height: 100%;
-  width: 100%;
-}
-.radio-btn-group{
-  margin: 0 auto;
-  /* border: 3px solid red; */
-  width:60%;
-  display: flex;
- flex-direction: column;
- text-align: left;
- margin-bottom: 20px;
-}
-
-.radio-btn-row{
-  margin: 0 auto;
-  /* border: 3px solid yellow; */
-  width:100%;
-  display: flex;
-  justify-content: space-between;
-}
-
-.radio-btn{
-  width: 30px;
-  height: 30px;
-  border: none;
-  border-radius: 50%;
-  font-size: 20px;
-}
-.radio-btn:hover{
-  transform:scale(1.1);
-cursor: pointer;
-  border: 2px solid rgb(0, 0, 66);
-
+height: 100vh;
+  background-color: #F5F5F5;
 }
 
 
-.box{
-  border: 2px solid green;
-  width:30%;
-  margin-right: 20px;
-}
+
+
+
 .all-tasks{
   display: flex;
   
@@ -94,7 +22,7 @@ circle {
   transition: all 0.7s ease-in-out;
 }
 
-.edit-icon-container, .delete-icon-container, .check-icon-container,.back-icon-container{
+/* .edit-icon-container, .delete-icon-container, .check-icon-container,.back-icon-container{
   width: 10%;
   height: auto;
   border-radius: 50%;
@@ -102,13 +30,13 @@ circle {
   background-color: rgb(177, 177, 221); 
   display: flex;
 margin: 0 auto;
-}
-.edit-icon-container:hover, .delete-icon-container:hover, .check-icon-container:hover, .back-icon-container:hover{
+} */
+/* .edit-icon-container:hover, .delete-icon-container:hover, .check-icon-container:hover, .back-icon-container:hover{
   border: 2px solid blue;
   cursor: pointer;
-}
-
-.edit-icon, .delete-icon, .check-icon, .back-icon{
+} */
+/* .edit-icon, .delete-icon, .check-icon,  */
+.back-icon{
   width: 100%;
   height: auto;
 }
@@ -120,11 +48,3 @@ margin: 0 auto;
   width: 70%;
 }
 
-.power-mode-btn{
-  background-color: #0379ce;
-  color: white;
-  font-size: 20px;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 20px;
-}

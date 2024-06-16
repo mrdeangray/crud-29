@@ -4,9 +4,10 @@ export const TaskContext = createContext(null);
 
 const TaskProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);
+  localStorage.clear()
 
   useEffect(() => {
-    const savedTasks = JSON.parse(localStorage.getItem("crud-29")) ||[];
+    const savedTasks = JSON.parse(localStorage.getItem("todo-app")) ||[];
     setTasks(savedTasks);
   }, []);
 

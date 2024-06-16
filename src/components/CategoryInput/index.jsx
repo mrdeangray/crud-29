@@ -7,7 +7,6 @@ const CategoryInput = ({ placeholder, value, setValue }) => {
       className="category-input"
       type="text"
       placeholder={placeholder}
-      autoFocus
       value={value}
       onChange={(e) => setValue(e.target.value)}
     />

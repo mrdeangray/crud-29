@@ -1,0 +1,16 @@
+.drop-down-menu select{
+    /* border: 2px solid red; */
+    border-radius: 20px;
+    width: 150px;
+    height: 30px;
+    font-size: 16px;
+    text-align-last:center;
+     box-shadow: 5px 6px 5px -4px rgba(0, 0, 0, 0.1);
+}
+
+.drop-down-menu select:hover{
+    cursor: pointer;
+border: 2px solid blue;
+/* transition: 0.3s ease 0s; */
+
+}

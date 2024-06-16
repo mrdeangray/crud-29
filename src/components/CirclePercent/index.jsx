@@ -13,7 +13,7 @@ const CirclePercent = ({ radius, percentage }) => {
             fill="transparent"
             stroke="lightgrey"
             strokeWidth="6px"
-            strokeDasharray={circumference}
+            strokeDasharray={circumference || ""} 
             strokeDashoffset="0"
           />
           <circle

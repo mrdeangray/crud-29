@@ -1,8 +1,10 @@
 import React from "react";
 
-const DeleteIcon = () => {
+const DeleteIcon = ({onClick}) => {
   return (
-    <div className="delete-icon-container">
+    <div className="delete-icon-container"
+    onClick={onClick}
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"

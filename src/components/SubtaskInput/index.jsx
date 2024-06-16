@@ -14,7 +14,7 @@ const SubtaskInput = ({
   return (
     <div className="subtask-input">
       <input
-        autoFocus
+        autoFocus={length>1}
         type="text"
         placeholder="Subtask"
         value={inputValue}

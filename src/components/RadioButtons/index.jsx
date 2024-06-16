@@ -1,15 +1,15 @@
 import React from "react";
+import "./radio-btns-styles.css"
 
 
 const RadioButtons = ({
   options,
   selectedOption,
   setSelectedOption,
-  title,
 }) => {
   return (
     <div className="radio-btn-group">
-      <p>{title}: </p>
+
       <div className="radio-btn-row">
       {options.map((option, index) => {
         return (
@@ -24,7 +24,7 @@ const RadioButtons = ({
                  }
                 : { backgroundColor: "lightblue" }
             }
-            backgroundColor={selectedOption === option ? "blue" : "lightblue"}
+          
             onClick={() => setSelectedOption(option)}
           >
             {option}{" "}
