@@ -11,6 +11,7 @@ import BackBtn from "../BackBtn";
 import "./create-task-styles.css";
 import SubtaskInput from "../SubtaskInput";
 import CategoryInput from "../CategoryInput";
+import { RotatingLines } from "react-loader-spinner";
 
 const Msg = styled.p`
   font-size: 20px;
@@ -33,14 +34,12 @@ const CreateTask = () => {
     newTask.id = uuid();
     newTask.name = taskName;
     newTask.dueDateTime = dueDateTime;
-    console.log(dueDateTime)
-    console.log(dueDateTime > new Date());
-    console.log(dueDateTime.format("MM/DD/YY hh:mm a"));
 
     newTask.priority = priority;
     newTask.complexity = complexity;
     newTask.subtasks = subtasks;
     newTask.percentCompleted = 0;
+    newTask.completed = false;
     newTask.category = category;
     const newTasks = [...tasks, newTask];
     setTasks(newTasks);
@@ -71,7 +70,7 @@ const CreateTask = () => {
   const handleDateTimeSelected = (date) => {
     // console.log(e)
     setDueDateTime(date);
-    setIsDateSelected(true)
+    setIsDateSelected(true);
   };
   return (
     <div className="create-task">
@@ -120,7 +119,7 @@ const CreateTask = () => {
           value={dueDateTime}
           onChange={(date) => handleDateTimeSelected(date)}
           // onChange={setDueDateTime}
-          style={!isDateSelected ?{ color: "#BABABA"} : { color: "black" }}
+          style={!isDateSelected ? { color: "#BABABA" } : { color: "black" }}
           format="M/DD/YY   h:mm a"
           plugins={[<TimePicker position="right" />]}
         />
@@ -156,7 +155,18 @@ const CreateTask = () => {
 
       <footer>
         <button className="add-task-btn" onClick={handleSubmit}>
-          Add Task
+          <span>{isUpdating ? "Saving" : "Save Task"}</span>
+          <RotatingLines
+            visible={isUpdating}
+            height="30"
+            width="30"
+            strokeColor="white"
+            strokeWidth="5"
+            animationDuration="0.75"
+            ariaLabel="rotating-lines-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+          />
         </button>
 
         {isUpdating && <Msg>Updating...</Msg>}
