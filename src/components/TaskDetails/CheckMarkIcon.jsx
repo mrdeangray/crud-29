@@ -10,8 +10,8 @@ const CheckMarkIcon = ({ className, completed }) => {
       stroke="currentColor"
       className={className}
       style={{
-        backgroundColor: completed ? "yellow" : "blue",
-        stroke: completed ? "black" : "white",
+        backgroundColor: completed ? "blue" : "#E7F5FF",
+        stroke: completed ? "white" : "black",
       }}
     >
       <path

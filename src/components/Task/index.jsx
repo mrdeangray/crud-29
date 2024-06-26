@@ -13,36 +13,15 @@ import TagIcon from "./TagIcon";
 import RightChevronIcon from "./RightChevronIcon";
 import { getRandomColor } from "../../utility/getRandomColor";
 import { color } from "framer-motion";
+import { getColorDueDate } from "../../utility/getColorDueDate";
+import { calcPercentComplete } from "../../utility/calcPercentComplete";
 
 const Task = ({ task }) => {
   const navigate = useNavigate();
   const { tasks, setTasks } = useContext(TaskContext);
 
+
   useEffect(() => {}, []);
-
-  const getColorDueDate = (dueDateTime) => {
-    dueDateTime = new Date(dueDateTime)
-    let threeDaysBeforeDueDate = new Date(dueDateTime)
-    threeDaysBeforeDueDate.setDate(threeDaysBeforeDueDate.getDate() - 3)
-    threeDaysBeforeDueDate=threeDaysBeforeDueDate.setHours(0, 0, 0, 0)
-    const dueDate = dueDateTime.setHours(0, 0, 0, 0);
-    const today = new Date().setHours(0, 0, 0, 0);
-
-    console.log({ today });
-    console.log({ threeDaysBeforeDueDate });
-    console.log({ dueDate });
-
-    let color = "";
-    if (today >= dueDate) {
-      color = "red";
-    } else if (threeDaysBeforeDueDate <= today && today < dueDate) {
-      color = "orange";
-    } else {
-      color = "blue";
-    }
-
-    return color;
-  };
 
   const handleDeleteTask = () => {
     const newTasks = tasks.filter((tk) => tk.id !== task.id);
@@ -51,6 +30,7 @@ const Task = ({ task }) => {
   };
 
   const toggleCompletedStatus = () => {
+
     const newTasks = tasks.map((tk) => {
       if (tk.id === task.id) {
         tk.completed = !tk.completed;
@@ -62,6 +42,30 @@ const Task = ({ task }) => {
       return tk;
     });
     setTasks(newTasks);
+    completeAllSubtasks(true)
+
+  };
+
+
+
+ 
+
+  const completeAllSubtasks = (bool) => {
+    let newSubtasks = [];
+    const newTasks = tasks.map((tk) => {
+      if (tk.id === task.id) {
+        newSubtasks = tk.subtasks.map((subtask, idx) => {
+          subtask.completed = bool;
+          return subtask;
+        });
+        // console.log(newSubtasks);
+      }
+      tk.percentCompleted = calcPercentComplete(tk.subtasks);
+      tk.subtasks = newSubtasks;
+      return tk;
+    });
+    setTasks(newTasks);
+    localStorage.setItem("todo-app", JSON.stringify(newTasks));
   };
 
   if (task) {
@@ -72,7 +76,6 @@ const Task = ({ task }) => {
             <div
               className="label"
               style={{
-                // backgroundColor: task.dueDateTime < new Date() && "orange",
                 backgroundColor: getColorDueDate(task.dueDateTime),
               }}
             ></div>
@@ -88,6 +91,7 @@ const Task = ({ task }) => {
           <div className="task-header-icons">
             <CheckIcon
               onClick={toggleCompletedStatus}
+              disabled={task.completed}
               style={{
                 backgroundColor: task.completed && "green",
                 color: task.completed && "white",
@@ -104,55 +108,85 @@ const Task = ({ task }) => {
           </div>
         </div>
 
-        <section
-          className="task-mid-section"
-          style={{
-            opacity: task.completed && 0.1,
-          }}
-        >
-          <div className="left">
-            <div className="row">
-              <CalendarIcon />
-              <span style={{ color: "blue", fontSize: "16px" }}>
-                Due Date: {task.dueDateTime.format("MM/DD/YY hh:mm a")}{" "}
-              </span>
-            </div>
-            <div className="row">
-              <PriorityIcon />
-              <span>Priority: {task.priority} </span>
-            </div>
-            <div className="row">
-              <Complexity />
-              <span>Complexity: {task.complexity}</span>
-            </div>
-            <div className="row">
-              <TagIcon />
-              <span>
-                Tags:
-                {task.category.split(",").map((tag, idx) => {
-                  return (
-                    <span
-                      key={idx}
-                      className="tag"
-                      style={{ backgroundColor: getRandomColor() }}
-                    >
-                      {tag}
-                    </span>
-                  );
-                })}
-              </span>
-            </div>
-          </div>
-          <div className="right">
-            <CirclePercent radius="20" percentage={task.percentCompleted} />
-            <Link to={`/taskdetails/${task.id}`}>
-              <div className="task-details-link">
-                <span>Task Details</span>
-                <RightChevronIcon />
+        <div className="container">
+          <section
+            className="task-mid-section"
+            style={{
+              opacity: task.completed && 0.1,
+            }}
+          >
+            <div className="left">
+              <div className="row">
+                <CalendarIcon />
+                <label htmlFor="due-date">Due Date:</label>
+                <span
+                  id="due-date"
+                  style={{
+                    color: getColorDueDate(task.dueDateTime),
+                    fontWeight: "bold",
+                  }}
+                >
+                  {task.dueDateTime.format("M/DD/YY  h:mm a")}{" "}
+                </span>
               </div>
-            </Link>
-          </div>
-        </section>
+
+              <div className="row">
+                <PriorityIcon />
+                <label htmlFor="priority">Priority:</label>
+                <span>
+                  {task.priority}
+                  <span style={{ fontSize: "12px" }}>/10</span>{" "}
+                </span>
+              </div>
+
+              <div className="row">
+                <Complexity />
+                <label htmlFor="complexity">Complexity:</label>
+                <span>
+                  {task.complexity}
+                  <span style={{ fontSize: "12px" }}>/10</span>{" "}
+                </span>
+              </div>
+
+              <div className="row">
+                <TagIcon />
+
+                <label htmlFor="tag">Tag:</label>
+                <span>
+                  {task.category &&
+                    task.category.split(",").map((tag, idx) => {
+                      return (
+                        <span
+                          key={idx}
+                          className="tag"
+                          style={{ backgroundColor: getRandomColor() }}
+                        >
+                          {tag}
+                        </span>
+                      );
+                    })}
+                </span>
+              </div>
+            </div>
+            <div className="right">
+              <CirclePercent radius="20" percentage={task.percentCompleted} />
+              <Link to={`/taskdetails/${task.id}`}>
+                <div className="task-details-link">
+                  <span>Task Details</span>
+                  <RightChevronIcon />
+                </div>
+              </Link>
+            </div>
+          </section>
+          {task.completed && (
+            <div className="cover">
+    
+            
+              <span className="stamp is-complete">Completed</span>
+              
+            </div>
+          )}
+        </div>
       </div>
     );
   } else console.log("first");

@@ -1,86 +1,106 @@
-.read-tasks{
-    margin: 0 auto;
-    border: 2px solid #c1c1c1;
-    width: 1400px
+.read-tasks {
+  margin: 0 auto;
+  border: 2px solid #c1c1c1;
+
+  width: 1400px;
+  padding-bottom: 20px;
+  /* margin-bottom: 20px; */
+  /* height: 100vh; */
+}
+
+.read-tasks header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 400px;
+}
+
+.read-tasks .all-tasks {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.power-mode-btn {
+  background-color: #0379ce;
+  color: white;
+  font-size: 18px;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 20px;
+  box-shadow: 5px 6px 5px -4px rgba(0, 0, 0, 0.6);
+  margin-bottom: 20px;
+}
+
+.power-mode-btn:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  transition: 0.3s ease 0s;
+}
+
+.power-icon-text {
+  display: flex;
+  justify-content: space-between;
+}
+
+.power-icon-text svg {
+  margin-right: 10px;
+}
+.drop-down-btns {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  width: 400px;
+  /* border: 2px solid green; */
+}
+.add-task-btn {
+  margin: 0 auto;
+  background-color: #0379ce;
+  color: white;
+  font-size: 18px;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 20px;
+  box-shadow: 5px 6px 5px -4px rgba(0, 0, 0, 0.6);
+}
+.add-icon-text {
+  display: flex;
+  justify-content: space-between;
+}
+
+.add-icon-text svg {
+  margin-right: 10px;
+  /* height: 50px;; */
+}
+
+.add-task-btn:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  transition: 0.3s ease 0s;
+}
+.read-tasks-footer {
+  margin: 0 auto;
+
+  width: 400px;
+  display: flex;
+  justify-content: center;
 }
 
 
-.read-tasks header{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 auto;
-    margin-top: 20px;
-    width: 400px;
-}
+@media screen and (max-width: 1250px) {
+    .read-tasks  {
+      width: 800px;
+    }
 
-.power-mode-btn{
-    background-color: #0379ce;
-    color: white;
-    font-size: 18px;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 20px;
-    box-shadow: 5px 6px 5px -4px rgba(0, 0, 0, 0.6);
-    margin-bottom: 20px
   }
-  
 
-  .power-mode-btn:hover{
-    cursor: pointer;
-    transform: scale(1.05);
-    transition: 0.3s ease 0s;
-    
+  @media screen and (max-width: 840px) {
+    .read-tasks  {
+      width: 450px;
+    }
+
   }
-
-
-.power-icon-text{
-    display: flex;
-    justify-content: space-between;
-}
-
-.power-icon-text svg{
-    margin-right: 10px;
-}
-.drop-down-btns{
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    width: 400px;
-    /* border: 2px solid green; */
-}
-.add-task-btn{
-    margin: 0 auto;
-    background-color: #0379ce;
-    color: white;
-    font-size: 18px;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 20px;
-    box-shadow: 5px 6px 5px -4px rgba(0, 0, 0, 0.6);
-}
-.add-icon-text{
-    display: flex;
-    justify-content: space-between;
-}
-
-.add-icon-text svg{
-    margin-right: 10px;
-    /* height: 50px;; */
-}
-
-.add-task-btn:hover{
-    cursor: pointer;
-    transform: scale(1.05);
-    transition: 0.3s ease 0s;
-    
-  }
-  .read-tasks-footer{
-    margin: 0 auto;
-
-    width: 400px;
-display: flex;
-justify-content: center;
-  }
-

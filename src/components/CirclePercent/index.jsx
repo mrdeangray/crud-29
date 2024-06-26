@@ -27,7 +27,7 @@ const CirclePercent = ({ radius, percentage }) => {
             strokeDashoffset={circumference * (1 - percentage / 100)}
           />
         </g>
-        <text x="50%" y="50%" fontSize={"14px"} fontWeight={"bold"}
+        <text x="50%" y="50%" fontSize={"12px"} fontWeight={"bold"}
             dominantBaseline="central"
           textAnchor="middle"
         >

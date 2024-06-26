@@ -18,6 +18,7 @@ const Msg = styled.p`
   color: red;
 `;
 const CreateTask = () => {
+
   const navigate = useNavigate();
   const { tasks, setTasks } = useContext(TaskContext);
   const [isUpdating, setIsUpating] = useState(false);
@@ -28,6 +29,26 @@ const CreateTask = () => {
   const [dueDateTime, setDueDateTime] = useState(new DateObject());
   const [category, setCategory] = useState("");
   const [isDateSelected, setIsDateSelected] = useState(false);
+
+
+
+  const loadSampleData = () => {
+    const newTask = {};
+    newTask.id = uuid();
+    newTask.name = "Dean";
+    newTask.dueDateTime = dueDateTime;
+
+    newTask.priority = priority;
+    newTask.complexity = complexity;
+    newTask.subtasks = subtasks;
+    newTask.percentCompleted = 0;
+    newTask.completed = false;
+    newTask.category = category;
+    const newTasks = [...tasks, newTask];
+    setTasks(newTasks);
+    localStorage.setItem("todo-app", JSON.stringify(newTasks));
+    
+  };
 
   const handleSubmit = () => {
     const newTask = {};
@@ -50,6 +71,13 @@ const CreateTask = () => {
       navigate(`/`);
     }, 2000);
   };
+  
+  // const loadSampleData=()=>{
+  //   for(let i=0; i<=6; i++){
+  //     handleSubmit2()
+  //   }
+  //   navigate("/")
+  // }
 
   const handleAdd = () => {
     const newSubtasks = [...subtasks, { name: "", completed: false }];
@@ -74,6 +102,7 @@ const CreateTask = () => {
   };
   return (
     <div className="create-task">
+      <button onClick={loadSampleData}>Add fake data</button>
       <header>
         <Link to={`/`}>
           <BackBtn />

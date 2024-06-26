@@ -1,8 +1,12 @@
 import React from "react";
 
-const CheckIcon = ({ onClick, style }) => {
+const CheckIcon = ({ onClick, style, disabled }) => {
   return (
-    <div className="check-icon-container" onClick={onClick}>
+    <button
+      className="check-icon-container"
+      disabled={disabled}
+      onClick={onClick}
+    >
       <svg
         stroke="black"
         fill="currentColor"
@@ -14,7 +18,7 @@ const CheckIcon = ({ onClick, style }) => {
       >
         <path d="m10 15.586-3.293-3.293-1.414 1.414L10 18.414l9.707-9.707-1.414-1.414z"></path>
       </svg>
-    </div>
+    </button>
   );
 };
 

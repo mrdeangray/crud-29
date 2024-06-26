@@ -39,7 +39,10 @@
 
 .task-details .task-name {
   display: flex;
+  justify-content: left;
+  align-items: center;
   margin-left: 20px;
+  width: 50%;
 }
 
 .task-details .task-header {
@@ -60,17 +63,25 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100px;
+  width: 40%;
 }
 
+.task-details .check-icon-container:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
 
-.task-details .edit-icon-container,
-.task-details .check-icon-container,
+.task-details .check-icon-container {
+  border: none;
+
+
 .task-details .delete-icon-container {
-  width: 100%;
+  width: 200%;
 }
-
-
+}
+/* .task-details .edit-icon-container{
+  width: 100%;
+} */
 
 .task-details .edit-icon-container svg,
 .task-details .check-icon-container svg,
@@ -80,6 +91,7 @@
   background-color: #e7f5ff;
   padding: 2px;
   width: 80%;
+  stroke: black;
 }
 
 .task-details .edit-icon-container svg:hover,
@@ -90,27 +102,79 @@
 }
 .task-details .task-mid-section {
   display: flex;
+  flex-direction: column;
+  height: 180px;
 }
 
-.task-details.task-mid-section .left {
-  width: 70%;
-  /* border: 2px solid red; */
+.task-details .mid-bottom-section {
+  grid-row-start: 1;
+  grid-column-start: 1;
+  z-index: 1;
 }
-.task-details .task-mid-section .left .row {
+
+.task-details .progressbar-container {
+  /* border: 2px solid rgb(106, 255, 0) */
+}
+
+.task-details .task-mid-section .row {
   display: flex;
   align-items: center;
-  border: 1px solid rgb(1, 71, 131);
   margin-bottom: 10px;
 }
 
-.task-details .task-mid-section .right {
-  margin-top: 15px;
-  display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-  align-items: center;
-  width: 30%;
-  /* border: 2px solid rgb(4, 239, 0); */
+.task-details .task-mid-section .row label {
+  /* color: blue; */
+  font-size: 14px;
+  margin: 0 6px 0 1px;
+}
+
+.task-details .task-mid-section .row span {
+  font-size: 18px;
+}
+
+.task-details .container {
+  display: grid;
+  grid-template-columns: 1;
+  grid-template-rows: 1;
+}
+.task-details .container .cover {
+  grid-column-start: 1;
+  grid-row-start: 1;
+  z-index: 2;
+}
+.task-details .stamp {
+  margin: 80px;
+  transform: rotate(12deg);
+  color: #555;
+  font-size: 2rem;
+  font-weight: 700;
+  border: 0.25rem solid #555;
+  display: inline-block;
+  padding: 0.25rem 1rem;
+  text-transform: uppercase;
+  border-radius: 1rem;
+  font-family: "Courier";
+  mask-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/8399/grunge.png");
+  mask-size: 944px 604px;
+  mix-blend-mode: multiply;
+}
+
+.task-details .is-complete {
+  color: #0a9928;
+  border: 0.5rem solid #0a9928;
+  mask-position: 13rem 6rem;
+  transform: rotate(-14deg);
+  border-radius: 0;
+}
+
+.task-details .tag {
+  /* border: 1px solid red; */
+  margin-right: 8px;
+  /* box-shadow: 5px 6px 5px -4px rgba(0, 0, 0, 1); */
+  box-shadow: rgba(0, 0, 0, 0.2) 0px -0.075em 0px inset;
+  border-radius: 5px;
+  font-size: 14px;
+  padding: 0 5px;
 }
 
 .task-details .subtask-checkmark {
@@ -130,12 +194,12 @@
   font-size: 30px;
   width: 90%;
   height: 50px;
-  background-color: rgb(169, 164, 164);
+  background-color: rgb(232, 232, 232);
   margin-bottom: 10px;
   border-radius: 50px;
 }
 
-.task-details .repeat-task-btn {
+.task-details-page .repeat-task-btn {
   display: flex;
   margin: 0 auto;
   background-color: #0379ce;
@@ -146,11 +210,11 @@
   border-radius: 20px;
   box-shadow: 5px 6px 5px -4px rgba(0, 0, 0, 0.6);
 }
-.task-details .repeat-task-btn span {
+.task-details-page .repeat-task-btn span {
   margin-left: 5px;
 }
 
-.task-details .repeat-task-btn:hover {
+.task-details-page .repeat-task-btn:hover {
   cursor: pointer;
   transform: scale(1.05);
   transition: 0.3s ease 0s;

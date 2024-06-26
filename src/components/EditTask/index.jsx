@@ -12,6 +12,7 @@ import SubtaskInput from "../SubtaskInput";
 import CategoryInput from "../CategoryInput";
 import { RotatingLines } from "react-loader-spinner";
 import { calcPercentComplete } from "../../utility/calcPercentComplete";
+import RadioToggleSwitch from "../RadioToggleSwitch/RadioToggleSwitch";
 
 const Msg = styled.p`
   font-size: 20px;
@@ -30,6 +31,7 @@ const EditTask = () => {
   const [category, setCategory] = useState("");
   const [isDateSelected, setIsDateSelected] = useState(false);
   const [task, setTask] = useState();
+  const [completed, setCompleted] = useState();
 
   useEffect(() => {
     const currTask = tasks.find((task) => task.id === id);
@@ -40,6 +42,7 @@ const EditTask = () => {
     setPriority(currTask.priority);
     setDueDateTime(currTask.dueDateTime);
     setCategory(currTask.category);
+    setCompleted(currTask.completed);
   }, [id, tasks]);
 
   const handleSubmit = () => {
@@ -52,6 +55,7 @@ const EditTask = () => {
         task.subtasks = subtasks;
         task.percentCompleted = calcPercentComplete(subtasks);
         task.category = category;
+        task.completed = completed;
       }
       return task;
     });
@@ -93,6 +97,17 @@ const EditTask = () => {
           </Link>
           <h1>Edit Task</h1>
         </header>
+
+        <section className="radio-toggle-switch">
+        <label htmlFor="task-name">Task Status</label>
+          <RadioToggleSwitch
+            setCompleted={setCompleted}
+            completed={completed}
+            title="Task Status"
+            leftLabel="Completed"
+            rightLabel="Not Completed"
+          />
+        </section>
 
         <section>
           <label htmlFor="task-name">Task Name</label>
