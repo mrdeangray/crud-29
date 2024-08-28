@@ -112,9 +112,7 @@
   z-index: 1;
 }
 
-.task-details .progressbar-container {
-  /* border: 2px solid rgb(106, 255, 0) */
-}
+
 
 .task-details .task-mid-section .row {
   display: flex;
